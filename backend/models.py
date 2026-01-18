@@ -11,7 +11,7 @@ class Base(DeclarativeBase):
     pass
 
 
-class User(DeclarativeBase):
+class User(Base):
     """
     User table in database
     """
@@ -20,9 +20,11 @@ class User(DeclarativeBase):
     id = Column(String, primary_key=True)
     email = Column(String, unique=True, nullable=False)
     password = Column(String, nullable=False)
+    # date created? modified?
+    # log in attempts?
 
 
-class Account(DeclarativeBase):
+class Account(Base):
     """
     Account Table in database
     """

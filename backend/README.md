@@ -1,4 +1,32 @@
-to run backend:
+generate secret key for .env: 
+    #!/bin/bash 
+    # generate .env script?
+    - openssl rand -hex 32
+
+
+navigate to backend:
+- cd backend
+
+create virtual environment
+
+install dependencies:
+- pip3 install -r requirements.txt
+
+Initialize alembic:
+- alembic init migrations
+
+Update alembic.ini
+- sqlalchemy.url = sqlite:///./spm.db
+
+Update alembic/env.py:
+- import models
+- target_metadata = models.Base.metadata
+
+Generate and apply migrations:
+- alembic revision -autogenerate
+- alembic upgrade head
+
+start server:
 - uvicorn main:app --reload
 
 to view APIs (once backend is running):
