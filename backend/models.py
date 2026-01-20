@@ -18,6 +18,7 @@ class User(Base):
 
     __tablename__ = "user"
     id = Column(String, primary_key=True)
+    username = Column(String, nullable=False)
     email = Column(String, unique=True, nullable=False)
     password = Column(String, nullable=False)
     # date created? modified?
@@ -25,21 +26,21 @@ class User(Base):
     # admin ?
 
 
-class Account(Base):
+class Credential(Base):
     """
-    Account Table in database
+    Credential Table in database
     """
 
-    __tablename__ = "account"
+    __tablename__ = "credential"
     id = Column(String, primary_key=True)
     username = Column(String, nullable=False)
     password = Column(String, nullable=False)
     site = Column(String, nullable=False)
     notes = Column(String, nullable=True)
     # maybe set enc_key to True for beginning?
-    encryption_key = Column(
-        String,
-        nullable=False
-        )
+    # encryption_key = Column(
+    #     String,
+    #     nullable=False
+    #     )
     user_id = Column(String, ForeignKey("user.id"))
-    user = relationship("User", backref="account")
+    user = relationship("User", backref="credential")
