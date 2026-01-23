@@ -1,8 +1,9 @@
-from datetime import datetime, timedelta, timezone
+# from datetime import datetime, timedelta, timezone
 # from typing import Annotated
 
-import jwt, uuid
-from fastapi import APIRouter, Depends, FastAPI, HTTPException, status
+import jwt 
+import uuid
+from fastapi import APIRouter, Depends, HTTPException, status
 from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
 from jwt.exceptions import InvalidTokenError, PyJWTError
 from pwdlib import PasswordHash
@@ -50,7 +51,11 @@ def create_admin(db: Session, create_admin: AdminCreate) -> Admin:
     return get_admin_by_username(db, new_admin.username)
 
 
-def update_admin(db: Session, update_admin: AdminUpdate, current_admin: Admin) -> Admin:
+def update_admin(
+        db: Session, 
+        update_admin: AdminUpdate, 
+        current_admin: Admin
+) -> Admin:
     """
     update admin (password only)
     """

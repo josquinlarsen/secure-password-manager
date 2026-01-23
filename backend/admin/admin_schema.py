@@ -4,7 +4,7 @@ from pydantic import BaseModel, field_validator
 class AdminCreate(BaseModel):
     username: str
     password: str
-    is_admin: bool
+    is_admin: bool = False 
 
     @field_validator("username", "password")
     def not_empty(cls, v):
@@ -16,7 +16,7 @@ class AdminCreate(BaseModel):
 class AdminUpdate(BaseModel):
     username: str
     password: str
-    is_admin: bool
+    is_admin: bool = False
 
     @field_validator("username", "password")
     def not_empty(cls, v):

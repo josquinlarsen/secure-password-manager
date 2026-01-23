@@ -2,6 +2,7 @@ from sqlalchemy import (
     Column,
     ForeignKey,
     String,
+    Boolean,
 )
 
 from sqlalchemy.orm import DeclarativeBase, relationship
@@ -44,3 +45,15 @@ class Credential(Base):
     #     )
     user_id = Column(String, ForeignKey("user.id"))
     user = relationship("User", backref="credential")
+
+
+class Admin(Base):
+    """
+    Admin table in DB
+    """
+
+    __tablename__ = "admin"
+    id = Column(String, primary_key=True)
+    username = Column(String, nullable=False)
+    password = Column(String, nullable=False)
+    is_admin = Column(Boolean, nullable=True)

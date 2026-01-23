@@ -1,6 +1,8 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
+from admin import admin_router
+
 # https://fastapi.tiangolo.com/tutorial/cors/#use-corsmiddleware
 
 app = FastAPI()
@@ -22,6 +24,7 @@ app.add_middleware(
 )
 
 # app.include_router(routers, tags[]) go here
+app.include_router(admin_router.router, tags=["Admin"])
 
 
 # to be removed
