@@ -12,13 +12,11 @@ from sqlalchemy.orm import (
 )
 from starlette import status
 from starlette.config import Config
-from datetime import datetime, timedelta, timezone
+from datetime import timedelta
 
 from database import get_db
 from admin.admin_crud import (
-    password_hash, 
     create_admin,
-    update_admin,
     delete_admin,
     get_admin_by_id,
     get_admin_by_username,
@@ -26,7 +24,6 @@ from admin.admin_crud import (
 )
 from admin.admin_schema import (
     AdminCreate,
-    AdminUpdate,
     AdminResponse,
     Token,
 )
@@ -62,6 +59,7 @@ def register_admin(
         password=new_admin.password,
         is_admin=new_admin.is_admin
     )
+
 
 @router.post("/login", response_model=Token)
 def login_for_access_token(

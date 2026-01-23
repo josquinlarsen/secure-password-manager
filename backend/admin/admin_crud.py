@@ -4,10 +4,9 @@
 import jwt 
 import uuid
 from fastapi import APIRouter, Depends, HTTPException, status
-from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
-from jwt.exceptions import InvalidTokenError, PyJWTError
+from fastapi.security import OAuth2PasswordBearer
+from jwt.exceptions import PyJWTError
 from pwdlib import PasswordHash
-from pydantic import BaseModel
 from starlette.config import Config
 from sqlalchemy.orm import Session
 
@@ -16,7 +15,6 @@ from database import get_db
 from admin.admin_schema import (
     AdminCreate,
     AdminUpdate,
-    AdminResponse,
 )
 
 config = Config(".env")
