@@ -17,7 +17,7 @@ from database import get_db
 # pwdlib for modern hashing; passlib for legacy hashing
 
 config = Config(".env")
-SECRET_KEY = config("SECRET_KEY")
+SECRET_KEY = config("SECRET_KEY", default="SECRET_KEY")
 ALGORITHM = "HS256"
 ACCESS_TOKEN_EXPIRE_MINUTES = 30
 
