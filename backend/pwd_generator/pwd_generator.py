@@ -93,3 +93,30 @@ def create_password(
 
     random.shuffle(password)
     return "".join(password)
+
+
+def evaluate_strength(
+        length: int,
+        symbols: int,
+        numbers: int,
+        uppers: int,
+        lowers: int
+        ) -> str:
+    """
+    Return strength rating of password
+    """
+    guidelines = {0: "very weak", 1: "weak", 2: "medium-weak",
+                  3: "medium", 4: "strong", 5: "very strong"}
+    strength = 0
+    if 7 < length < 17:
+        strength += 1
+    if symbols > 0:
+        strength += 1
+    if numbers > 0:
+        strength += 1
+    if uppers > 0:
+        strength += 1
+    if lowers > 0:
+        strength += 1
+
+    return guidelines[strength]

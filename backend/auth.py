@@ -62,8 +62,8 @@ async def get_current_user(
             raise credentials_exception
         token = Token(username=username)
     except InvalidTokenError:
-        raise credentials_exception  
-    
+        raise credentials_exception 
+
     # user = get_user(db=db, username=token.username)
     # if user is None:
     #     return credentials_exception
