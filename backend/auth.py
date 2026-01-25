@@ -8,7 +8,7 @@ from jwt.exceptions import InvalidTokenError
 # from pwdlib import PasswordHash
 from pydantic import BaseModel
 from starlette.config import Config
-from sqlalchemy import Session
+from sqlalchemy.orm import Session
 
 from database import get_db
 
